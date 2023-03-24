@@ -22,9 +22,9 @@
     "prepublishOnly": "npm test",
     "pre-test": "npm run clean && npm run build:server",
     "watch": "tsc -w",
-    "watch:test": "ava -w",
-    "postinstall": "tsc -d"
+    "watch:test": "ava -w"
   },
+  "postinstall": "tsc -d",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bcherny/json-schema-to-typescript.git"
