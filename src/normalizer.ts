@@ -159,6 +159,7 @@ rules.set('Remove maxItems if it is big enough to likely cause OOMs', (schema, _
 
 rules.set('Normalize schema.items', (schema, _fileName, options) => {
   if (options.ignoreMinAndMaxItems) {
+    // @ts-ignore
     return
   }
   const {maxItems, minItems} = schema

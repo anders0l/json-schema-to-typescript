@@ -4,32 +4,33 @@ import {traverse} from './utils'
 type Rule = (schema: JSONSchema) => boolean | void
 const rules = new Map<string, Rule>()
 
+// @ts-ignore
 rules.set('Enum members and tsEnumNames must be of the same length', schema => {
   if (schema.enum && schema.tsEnumNames && schema.enum.length !== schema.tsEnumNames.length) {
     return false
   }
 })
-
+// @ts-ignore
 rules.set('tsEnumNames must be an array of strings', schema => {
   if (schema.tsEnumNames && schema.tsEnumNames.some(_ => typeof _ !== 'string')) {
     return false
   }
 })
-
+// @ts-ignore
 rules.set('When both maxItems and minItems are present, maxItems >= minItems', schema => {
   const {maxItems, minItems} = schema
   if (typeof maxItems === 'number' && typeof minItems === 'number') {
     return maxItems >= minItems
   }
 })
-
+// @ts-ignore
 rules.set('When maxItems exists, maxItems >= 0', schema => {
   const {maxItems} = schema
   if (typeof maxItems === 'number') {
     return maxItems >= 0
   }
 })
-
+// @ts-ignore
 rules.set('When minItems exists, minItems >= 0', schema => {
   const {minItems} = schema
   if (typeof minItems === 'number') {

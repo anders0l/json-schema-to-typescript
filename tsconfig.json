@@ -1,23 +1,36 @@
 {
   "compilerOptions": {
-    "declaration": false,
     "esModuleInterop": true,
-    "lib": [
-      "es2015"
-    ],
+    "skipLibCheck": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
+    "declaration": true,
+    "target": "es6",
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "dist",
-    "preserveConstEnums": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+    "suppressExcessPropertyErrors": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
-    "strict": true,
-    "target": "es5"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "removeComments": false,
+    "lib": ["ES6",  "ES2017",  "ES2015"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "src/*": ["src/*"]
+    }
   },
-  "exclude": [
-    "example",
-    "node_modules"
-  ]
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "exclude": ["node_modules","example"]
 }

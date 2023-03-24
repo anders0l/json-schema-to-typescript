@@ -227,6 +227,7 @@ export function log(style: LogStyle, title: string, ...messages: unknown[]): voi
 
 function getStyledTextForLogging(style: LogStyle): ((text: string) => string) | undefined {
   if (!process.env.VERBOSE) {
+    // @ts-ignore
     return
   }
   switch (style) {

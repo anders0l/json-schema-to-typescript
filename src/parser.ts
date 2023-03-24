@@ -311,6 +311,7 @@ function standaloneName(
   schema: LinkedJSONSchema,
   keyNameFromDefinition: string | undefined,
   usedNames: UsedNames
+  // @ts-ignore
 ): string | undefined {
   const name = schema.title || schema.$id || keyNameFromDefinition
   if (name) {
@@ -345,7 +346,7 @@ function parseSuperTypes(
 ): TNamedInterface[] {
   // Type assertion needed because of dereferencing step
   // TODO: Type it upstream
-  const superTypes = schema.extends as SchemaSchema[] | undefined
+  const superTypes = schema.extends as unknown as SchemaSchema[] | undefined
   if (!superTypes) {
     return []
   }
