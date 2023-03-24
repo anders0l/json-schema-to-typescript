@@ -23,7 +23,7 @@
     "pre-test": "npm run clean && npm run build:server",
     "watch": "tsc -w",
     "watch:test": "ava -w",
-    "postinstall": "tsc -d"
+    "postinstall": "rm -rf dist && tsc -d"
   },
   "repository": {
     "type": "git",
