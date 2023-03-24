@@ -258,10 +258,10 @@ function parseNonLiteral(
           comment: schema.description,
           keyName,
           params: schema.enum!.map(_ => ({
-            ast: parse(_, options, _ as string, processed, usedNames),
+            ast: parse(schema.additionalProperties, options, _ as string, processed, usedNames),
             keyName: _ as string
           })),
-          standaloneName: standaloneName(schema, keyName, usedNames)!,
+          standaloneName: standaloneName(schema, keyNameFromDefinition, usedNames)!,
           type: 'ENUM'
         }
       }
