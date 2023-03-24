@@ -44,6 +44,10 @@ export interface Options {
    */
   enableConstEnums: boolean
   /**
+   * Generate string enums instead of string union types?
+   */
+  enableStringEnums: boolean
+  /**
    * Format code? Set this to `false` to improve performance.
    */
   format: boolean
@@ -90,6 +94,7 @@ export const DEFAULT_OPTIONS: Options = {
   cwd: process.cwd(),
   declareExternallyReferenced: true,
   enableConstEnums: true,
+  enableStringEnums: false,
   format: true,
   ignoreMinAndMaxItems: false,
   maxItems: 20,
@@ -107,7 +112,7 @@ export const DEFAULT_OPTIONS: Options = {
   unknownAny: true
 }
 
-export function compileFromFile (filename: string, options: Partial<Options> = DEFAULT_OPTIONS): Promise<string> {
+export function compileFromFile(filename: string, options: Partial<Options> = DEFAULT_OPTIONS): Promise<string> {
   const contents = Try(
     () => readFileSync(filename),
     () => {
@@ -123,13 +128,13 @@ export function compileFromFile (filename: string, options: Partial<Options> = D
   return compile(schema, stripExtension(filename), {cwd: dirname(filename), ...options})
 }
 
-export async function compile (schema: JSONSchema4, name: string, options: Partial<Options> = {}): Promise<string> {
+export async function compile(schema: JSONSchema4, name: string, options: Partial<Options> = {}): Promise<string> {
   validateOptions(options)
 
   const _options = merge({}, DEFAULT_OPTIONS, options)
 
   const start = Date.now()
-  function time () {
+  function time() {
     return `(${Date.now() - start}ms)`
   }
 
